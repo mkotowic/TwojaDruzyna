@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md-6">
+      <form name="form" #f="ngForm" novalidate class="feedback-form" (ngSubmit)="f.form.valid && sendFeedback()">
+        <div class="form-group">
+          <label for="author">Imię</label>
+          <input type="text"
+                 id="author"
+                 class="form-control"
+                 name="author"
+                 placeholder="Wpisz swoje imię"
+                 [(ngModel)]="model.author"
+                 #author="ngModel"
+                 [ngClass]="{'is-invalid': f.submitted && author.invalid}"
+                 required />
+          <div *ngIf="f.submitted && author.invalid" class="invalid-input">
+            <div *ngIf="author.errors?.required"> Imię nie może być puste</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text"
+                 id="email"
+                 class="form-control"
+                 name="email"
+                 placeholder="Wpisz swój email"
+                 [(ngModel)]="model.email"
+                 #email="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                 required email/>
+          <div *ngIf="f.submitted && email.invalid" class="invalid-input">
+            <div *ngIf="email.errors?.email"> Pole jest wypełnione nieprawidłowo</div>
+            <div *ngIf="email.errors?.required"> Email nie może być pusty</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Numer telefonu</label>
+          <br/>
+
+          <input type="text"
+                 id="phone"
+                 name="phone"
+                 class="form-control"
+                 placeholder="Wpisz swój nr telefonu"
+                 [(ngModel)]="model.phoneNumber"
+          />
+        </div>
+        <div class="form-group">
+          <label for="content">Feedback</label>
+          <textarea
+            id="content"
+            class="form-control"
+            name="content"
+            placeholder="Miejsce na treść"
+            rows="10"
+            [(ngModel)]="model.content"
+            #content = "ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && content.invalid }"
+            required minlength="10">
+          </textarea>
+          <div *ngIf="f.submitted && content.invalid" class="invalid-input">
+            <div *ngIf="content.errors?.required">Email nie może być pusty</div>
+            <div *ngIf="content.errors?.minlength">Wymaganych jest conajmniej 10 znaków</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-info pull-right">
+          <i class="fa fa-envelope-o"></i>
+          <span> Wyślij</span>
+        </button>
+      </form>
+    </div>
+    <div class="offset-3"></div>
+  </div>
+</div>

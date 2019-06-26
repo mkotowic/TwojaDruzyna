@@ -1,0 +1,9 @@
+body, input[type="text"], button {
+    font-family: Cambria, Georgia;
+  }
+
+  .invalid-result-form {
+    color: red;
+    font-style: italic;
+    font-size: small;
+  }

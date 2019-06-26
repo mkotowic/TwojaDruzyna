@@ -1,0 +1,10 @@
+.invalid-input {
+    color: red;
+    font-style: italic;
+    font-size: small;
+  }
+  body, input[type="text"] {
+    font-family: Cambria, Georgia;
+  }
+  
+  
